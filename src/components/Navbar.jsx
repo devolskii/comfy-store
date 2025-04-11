@@ -6,7 +6,7 @@ import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   return (
-    <nav className="">
+    <nav className="bg-base-200">
       <div className=" align-element navbar">
         <div className=" navbar-start">
           {/* Title */}
@@ -39,7 +39,15 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {/* THEME BUTTON */}
-          <FaMoon className="h-6 w-6" />
+          <label className="swap swap-rotate">
+            <input
+              type="checkbox"
+              className="theme-controller"
+              value="coffee"
+            />
+            <FaMoon className="swap-on h-6 w-6" />
+            <IoMdSunny className="swap-off h-6 w-6" />
+          </label>
           {/* CART LINK */}
           <NavLink to="/cart" className="btn btn-ghost btn-circle btn-md ml-4">
             <div className="indicator">

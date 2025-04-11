@@ -1,5 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: autumn --default, coffee;
+}
 
 @layer components {
   .align-element {
