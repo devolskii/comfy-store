@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(
-    localStorage.getItem("isDark") ? true : false
+    localStorage.getItem("isDark") === "true"
   );
+
   useEffect(() => {
     localStorage.setItem("isDark", isDark);
   }, [isDark]);
