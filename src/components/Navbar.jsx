@@ -3,8 +3,18 @@ import { FaMoon, FaBars } from "react-icons/fa";
 import { IoMdSunny } from "react-icons/io";
 import { NavLink } from "react-router";
 import NavLinks from "./NavLinks";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [isDark, setIsDark] = useState(
+    localStorage.getItem("isDark") ? true : false
+  );
+  useEffect(() => {
+    localStorage.setItem("isDark", isDark);
+  }, [isDark]);
+  const handleChange = () => {
+    setIsDark(!isDark);
+  };
   return (
     <nav className="bg-base-200">
       <div className=" align-element navbar">
@@ -44,6 +54,8 @@ const Navbar = () => {
               type="checkbox"
               className="theme-controller"
               value="coffee"
+              onChange={handleChange}
+              checked={isDark}
             />
             <FaMoon className="swap-on h-6 w-6" />
             <IoMdSunny className="swap-off h-6 w-6" />
