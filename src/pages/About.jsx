@@ -9,7 +9,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <p className="mt-6 text-lg leading-8 max-w-2xl mx-auto">
+      <p className="mt-15 text-lg text-center leading-8 max-w-2xl mx-auto">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus
         consectetur quasi deleniti quas sed laborum debitis aut, velit inventore
         voluptates dolor quo ipsum aliquid saepe, eos, suscipit quidem alias
