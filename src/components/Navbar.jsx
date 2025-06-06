@@ -4,8 +4,11 @@ import { IoMdSunny } from "react-icons/io";
 import { NavLink } from "react-router";
 import NavLinks from "./NavLinks";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+
   const [isDark, setIsDark] = useState(
     localStorage.getItem("isDark") === "true"
   );
@@ -18,7 +21,7 @@ const Navbar = () => {
   };
   return (
     <nav className="bg-base-200">
-      <div className=" align-element navbar">
+      <div className=" navbar align-element">
         <div className=" navbar-start">
           {/* Title */}
           <NavLink
@@ -65,7 +68,7 @@ const Navbar = () => {
           <NavLink to="/cart" className="btn btn-ghost btn-circle btn-md ml-4">
             <div className="indicator">
               <span className="indicator-item badge badge-xs badge-primary">
-                8
+                {numItemsInCart}
               </span>
               <FiShoppingCart className="h-6 w-6" />
             </div>

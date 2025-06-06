@@ -8,7 +8,7 @@ const carouselImages = [hero1, hero2, hero3, hero4];
 
 const Hero = () => {
   return (
-    <div className="  grid grid-cols-1 grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 items-center">
+    <div className="  grid grid-cols-1 grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 items-center gap-6">
       <div className="">
         <h1 className=" text-6xl max-w-2xl font-bold tracking-tight">
           We’re changing the way people shop

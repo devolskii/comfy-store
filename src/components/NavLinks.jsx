@@ -18,7 +18,7 @@ const NavLinks = () => {
             <NavLink
               to={url}
               className={({ isActive }) =>
-                `capitalize ${isActive ? "menu-active" : ""}`
+                `capitalize ${isActive && "menu-active"}`
               }
             >
               {text}
