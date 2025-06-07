@@ -19,46 +19,58 @@ const CartItem = ({ cartItem }) => {
     dispatch(editItem({ itemandColorID, noofItems: parseInt(e.target.value) }));
   };
   return (
-    <article className="mt-4 mb-4 grid grid-cols-2">
+    <article className="mt-4 mb-4 border-b border-base-300 pb-4 last:border-b-0 grid grid-cols-2 md:grid-cols-6">
       {/* IMAGE */}
-      <img src={image} className="rounded-lg h-48 w-35 object-cover" />
+      <img
+        src={image}
+        className="rounded-lg h-48 w-35 object-cover md:h-24 md:w-24 md:col-span-1"
+      />
       {/* INFO */}
-      <div className="pt-2 flex flex-col gap-y-1 justify-start items-end">
-        {/* TITLE */}
-        <div className="capitalize font-semibold">{title} </div>
-        {/* COMPANY */}
-        <div> {company}</div>
-        {/* COLOR */}
-        <div className="flex">
-          <h2>Color: </h2>
-          <div
-            className="badge badge-sm ml-2"
-            style={{ backgroundColor: productColor }}
-          ></div>
+      <div className="pt-2 md:grid md:grid-cols-3 md:col-span-5">
+        {/* MD:DIV1 */}
+        <div className="flex flex-col gap-y-1 justify-start items-end md:items-start">
+          {/* TITLE */}
+          <div className="capitalize font-semibold">{title} </div>
+          {/* COMPANY */}
+          <div> {company}</div>
+          {/* COLOR */}
+          <div className="flex">
+            <h2>Color: </h2>
+            <div
+              className="badge badge-sm ml-2"
+              style={{ backgroundColor: productColor }}
+            ></div>
+          </div>
         </div>
-        {/* NO OF ITEMS */}
-        <div>
-          <select
-            className="select select-xs flex items-center"
-            value={noofItems}
-            onChange={(e) => {
-              handleNos(e);
+        {/* MD:DIV2 */}
+        <div className="flex flex-col gap-y-1 justify-start items-end md:items-center">
+          {/* NO OF ITEMS */}
+          <div>
+            <select
+              className="select select-xs flex items-center"
+              value={noofItems}
+              onChange={(e) => {
+                handleNos(e);
+              }}
+            >
+              {generateAmountOptions(noofItems + 5)}
+            </select>
+          </div>
+          {/* REMOVE */}
+          <button
+            onClick={() => {
+              removeItemFromCart();
             }}
+            className="text-sm link link-warning link-hover"
           >
-            {generateAmountOptions(noofItems + 5)}
-          </select>
+            Remove
+          </button>
         </div>
-        {/* REMOVE */}
-        <button
-          onClick={() => {
-            removeItemFromCart();
-          }}
-          className="text-sm link link-warning link-hover"
-        >
-          Remove
-        </button>
-        {/* REMOVE */}
-        <div className="font-semibold">{formatPrice(price)}</div>
+        {/* MD:DIV3 */}
+        <div className="flex flex-col gap-y-1 justify-start items-end">
+          {/* PRICE */}
+          <div className="font-semibold">{formatPrice(price)}</div>
+        </div>
       </div>
     </article>
   );

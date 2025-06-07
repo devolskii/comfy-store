@@ -6,7 +6,7 @@ const CartTotals = () => {
     (state) => state.cartState
   );
   return (
-    <div className="card bg-base-300 w-full">
+    <div className="card bg-base-300 w-full mt-4">
       <div className="card-body">
         {/* CART TOTAL */}
         <div className="flex justify-between pb-2 border-b border-base-content">

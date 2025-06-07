@@ -5,7 +5,7 @@ const CartItemsList = () => {
   const cartItems = useSelector((state) => state.cartState.cartItems);
 
   return (
-    <div>
+    <div className="mt-4">
       {cartItems.map((item) => {
         return <CartItem key={item.itemandColorID} cartItem={item} />;
       })}
