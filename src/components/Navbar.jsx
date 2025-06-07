@@ -65,7 +65,7 @@ const Navbar = () => {
             <IoMdSunny className="swap-off h-6 w-6" />
           </label>
           {/* CART LINK */}
-          <NavLink to="/cart" className="btn btn-ghost btn-circle btn-md ml-4">
+          <NavLink to="/cart" className="btn btn-ghost btn-circle btn-lg ml-4">
             <div className="indicator">
               <span className="indicator-item badge badge-xs badge-primary">
                 {numItemsInCart}

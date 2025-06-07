@@ -26,7 +26,7 @@ const CartItem = ({ cartItem }) => {
         className="rounded-lg h-48 w-35 object-cover md:h-24 md:w-24 md:col-span-1"
       />
       {/* INFO */}
-      <div className="pt-2 md:grid md:grid-cols-3 md:col-span-5">
+      <div className="ml-8 pt-2 md:grid md:grid-cols-3 md:col-span-5">
         {/* MD:DIV1 */}
         <div className="flex flex-col gap-y-1 justify-start items-end md:items-start">
           {/* TITLE */}
