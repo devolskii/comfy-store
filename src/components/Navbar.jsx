@@ -3,21 +3,17 @@ import { FaMoon, FaBars } from "react-icons/fa";
 import { IoMdSunny } from "react-icons/io";
 import { NavLink } from "react-router";
 import NavLinks from "./NavLinks";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../features/user/userSlice";
 
 const Navbar = () => {
   const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+  const isDark =
+    useSelector((state) => state.userState.theme) === "coffee" ? true : false;
+  const dispatch = useDispatch();
 
-  const [isDark, setIsDark] = useState(
-    localStorage.getItem("isDark") === "true"
-  );
-
-  useEffect(() => {
-    localStorage.setItem("isDark", isDark);
-  }, [isDark]);
-  const handleChange = () => {
-    setIsDark(!isDark);
+  const handleTheme = () => {
+    dispatch(toggleTheme());
   };
   return (
     <nav className="bg-base-200">
@@ -54,13 +50,7 @@ const Navbar = () => {
         <div className="navbar-end">
           {/* THEME BUTTON */}
           <label className="swap swap-rotate">
-            <input
-              type="checkbox"
-              className="theme-controller"
-              value="coffee"
-              onChange={handleChange}
-              checked={isDark}
-            />
+            <input type="checkbox" checked={isDark} onChange={handleTheme} />
             <FaMoon className="swap-on h-6 w-6" />
             <IoMdSunny className="swap-off h-6 w-6" />
           </label>
