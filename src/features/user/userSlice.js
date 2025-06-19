@@ -13,7 +13,7 @@ const getThemeFromLocalStorage = () => {
 };
 
 const initialState = {
-  user: "john",
+  user: { username: "john" },
   theme: getThemeFromLocalStorage(),
 };
 
@@ -25,14 +25,15 @@ const userSlice = createSlice({
       console.log("login user");
     },
     logoutUser: (state) => {
-      console.log("logout user");
+      state.user = null;
+      localStorage.removeItem("user");
+      toast.success("Logged out succesfully");
     },
     toggleTheme: (state) => {
       const { light, dark } = themes;
       //   console.log(light, dark);
       state.theme = state.theme === light ? dark : light;
       document.documentElement.setAttribute("data-theme", state.theme);
-      //REVISIT==============================
       localStorage.setItem("theme", state.theme);
       console.log("toggle theme");
     },
