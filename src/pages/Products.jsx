@@ -19,7 +19,7 @@ export const loader = async ({ request }) => {
   const meta = response.data.meta;
   // console.log(products);
   // console.log(meta);
-  return { products, meta, params };
+  return { products, meta, params }; //can be accessed through useLoaderData()
 };
 
 const Products = () => {
