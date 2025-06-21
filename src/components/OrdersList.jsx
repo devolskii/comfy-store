@@ -30,7 +30,7 @@ const OrdersList = () => {
                   <td>{address}</td>
                   <td>{numItemsInCart}</td>
                   <td>{orderTotal}</td>
-                  <td>{date}</td>
+                  <td className="hidden md:block">{date}</td>
                 </tr>
               );
             })}
