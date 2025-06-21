@@ -63,7 +63,7 @@ const SingleProduct = () => {
         </ul>
       </div>
       {/* PRODUCT */}
-      <div className="mt-8 grid grid-cols-2 gap-x-8 lg:gap-x-16">
+      <div className="mt-8 md:grid md:grid-cols-2 md:gap-x-8 lg:gap-x-16">
         {/* IMAGE */}
         <div className="flex justify-center items-start">
           <img
@@ -72,7 +72,7 @@ const SingleProduct = () => {
             className="h-96 object-cover rounded-lg w-full"
           />
         </div>
-        <div className="">
+        <div className="mt-4">
           {/* PRODUCT INFO */}
           <h1 className="text-3xl capitalize font-bold">{title}</h1>
           <h2 className="text-xl font-bold mt-2 text-primary">{company}</h2>
