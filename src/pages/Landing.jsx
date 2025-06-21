@@ -3,11 +3,14 @@ import { customFetch } from "../utils";
 
 const url = "/products?featured=true";
 
-export const loader = async () => {
-  //HYDRATE FALLBACK???
-  const response = await customFetch(url);
-  // console.log(response);
-  const products = response.data.data; //created a new const so that I know what I'm expecting in the useLoaderData
+const featuredProductsQuery = {
+  queryKey: ["featuredProducts"],
+  queryFn: () => customFetch(url),
+};
+
+export const loader = (queryClient) => async () => {
+  const response = await queryClient.ensureQueryData(featuredProductsQuery);
+  const products = response.data.data;
   return { products };
 };
 

@@ -1,4 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 import {
   About,
   Cart,
@@ -23,6 +27,14 @@ import { action as loginAction } from "./pages/Login";
 import { action as checkoutAction } from "./components/CheckoutForm";
 import { store } from "./store";
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5,
+    },
+  },
+});
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,7 +44,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
-        loader: landingLoader,
+        loader: landingLoader(queryClient),
         errorElement: <ErrorElement />,
       },
       { path: "about", element: <About /> },
@@ -41,14 +53,22 @@ const router = createBrowserRouter([
         path: "checkout",
         element: <Checkout />,
         loader: checkoutLoader(store),
-        action: checkoutAction(store),
+        action: checkoutAction(store, queryClient),
       },
-      { path: "orders", element: <Orders />, loader: ordersLoader(store) },
-      { path: "products", element: <Products />, loader: productsLoader },
+      {
+        path: "orders",
+        element: <Orders />,
+        loader: ordersLoader(store, queryClient),
+      },
+      {
+        path: "products",
+        element: <Products />,
+        loader: productsLoader(queryClient),
+      },
       {
         path: "products/:id",
         element: <SingleProduct />,
-        loader: singleProductLoader,
+        loader: singleProductLoader(queryClient),
         errorElement: <ErrorElement />,
       },
     ],
@@ -68,6 +88,11 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
 };
 export default App;
