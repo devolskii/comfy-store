@@ -30,7 +30,9 @@ const CartItem = ({ cartItem }) => {
         {/* MD:DIV1 */}
         <div className="flex flex-col gap-y-1 justify-start items-end md:items-start">
           {/* TITLE */}
-          <div className="capitalize font-semibold">{title} </div>
+          <div className="capitalize font-semibold text-right md:text-left">
+            {title}{" "}
+          </div>
           {/* COMPANY */}
           <div> {company}</div>
           {/* COLOR */}
